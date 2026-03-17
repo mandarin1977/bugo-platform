@@ -1,0 +1,48 @@
+export const TEMPLATES = {
+  classic: {
+    name: "클래식",
+    bgColor: "bg-stone-50",
+    textColor: "text-stone-800",
+    accentColor: "text-stone-600",
+    borderColor: "border-stone-300",
+    buttonBg: "bg-stone-700 hover:bg-stone-800",
+    cardBg: "bg-white",
+    headerFont: "font-serif",
+    flower: "🪷",
+  },
+  modern: {
+    name: "모던",
+    bgColor: "bg-neutral-50",
+    textColor: "text-neutral-900",
+    accentColor: "text-neutral-500",
+    borderColor: "border-neutral-200",
+    buttonBg: "bg-neutral-800 hover:bg-neutral-900",
+    cardBg: "bg-white",
+    headerFont: "font-sans",
+    flower: "🤍",
+  },
+  warm: {
+    name: "따뜻한",
+    bgColor: "bg-amber-50",
+    textColor: "text-amber-900",
+    accentColor: "text-amber-700",
+    borderColor: "border-amber-200",
+    buttonBg: "bg-amber-700 hover:bg-amber-800",
+    cardBg: "bg-white",
+    headerFont: "font-serif",
+    flower: "🌼",
+  },
+  serene: {
+    name: "고요한",
+    bgColor: "bg-slate-50",
+    textColor: "text-slate-800",
+    accentColor: "text-slate-500",
+    borderColor: "border-slate-200",
+    buttonBg: "bg-slate-700 hover:bg-slate-800",
+    cardBg: "bg-white",
+    headerFont: "font-serif",
+    flower: "🕊️",
+  },
+} as const;
+
+export type TemplateKey = keyof typeof TEMPLATES;
