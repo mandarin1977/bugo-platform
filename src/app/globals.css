@@ -43,6 +43,13 @@ section {
   }
 }
 
+/* 로딩바 애니메이션 */
+@keyframes loading {
+  0% { width: 0%; }
+  50% { width: 80%; }
+  100% { width: 100%; }
+}
+
 /* 스크롤바 숨기기 (모바일 부고장 느낌) */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
