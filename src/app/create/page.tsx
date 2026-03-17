@@ -237,14 +237,39 @@ export default function CreatePage() {
                 <label className={labelClass}>
                   장례식장 주소 <span className="text-red-500">*</span>
                 </label>
-                <input
-                  type="text"
-                  value={funeralAddress}
-                  onChange={(e) => setFuneralAddress(e.target.value)}
-                  placeholder="서울시 강남구 ..."
-                  className={inputClass}
-                  maxLength={200}
-                />
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={funeralAddress}
+                    readOnly
+                    placeholder="주소 검색을 눌러주세요"
+                    className={`${inputClass} bg-stone-50 cursor-pointer`}
+                    onClick={() => {
+                      new (window as any).daum.Postcode({
+                        oncomplete: (data: any) => {
+                          setFuneralAddress(data.roadAddress || data.jibunAddress);
+                          setFuneralHall(funeralHall || data.buildingName || "");
+                        },
+                      }).open();
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      new (window as any).daum.Postcode({
+                        oncomplete: (data: any) => {
+                          setFuneralAddress(data.roadAddress || data.jibunAddress);
+                          if (!funeralHall && data.buildingName) {
+                            setFuneralHall(data.buildingName);
+                          }
+                        },
+                      }).open();
+                    }}
+                    className="shrink-0 px-4 py-3 bg-stone-700 text-white text-sm rounded-lg hover:bg-stone-800 transition-colors"
+                  >
+                    주소 검색
+                  </button>
+                </div>
               </div>
               <div>
                 <label className={labelClass}>장례식장 연락처</label>
